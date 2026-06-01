@@ -1,0 +1,15 @@
+{
+	"name": "df-azureproject-spotify23",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1e92ba53-71ea-4a17-b9b2-a285f8592928",
+		"tenantId": "170fd1da-f694-4b57-89d9-9be6ee9e5ae7"
+	}
+}
