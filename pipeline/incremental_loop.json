@@ -43,7 +43,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "SELECT * FROM @{item().schema}.@{item().table} WHERE @item().cdc_col} > '@{if(empty(item().from_date),activity('last_cdc').output.value[0].cdc,item().from_date)}'",
+										"value": "SELECT * FROM @{item().schema}.@{item().table} WHERE @{item().cdc_col} > '@{if(empty(item().from_date),activity('last_cdc').output.value[0].cdc,item().from_date)}'",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -320,7 +320,38 @@
 		"parameters": {
 			"loop_input": {
 				"type": "array",
-				"defaultValue": "[   {     \"schema\" : \"dbo\"     \"table\" : \"DimUser\"     \"cdc_col\" : \"updated_at\"     \"from_date\" : \"\"   },   {     \"schema\" : \"dbo\"     \"table\" : \"DimTrack\"     \"cdc_col\" : \"updated_at\"     \"from_date\" : \"\"   },   {     \"schema\" : \"dbo\"     \"table\" : \"DimDate\"     \"cdc_col\" : \"updated_at\"     \"from_date\" : \"\"   },   {     \"schema\" : \"dbo\"     \"table\" : \"DimArtist\"     \"cdc_col\" : \"updated_at\"     \"from_date\" : \"\"   },   {     \"schema\" : \"dbo\"     \"table\" : \"FastStream\"     \"cdc_col\" : \"updated_at\"     \"from_date\" : \"\"   } ]"
+				"defaultValue": [
+					{
+						"schema": "dbo",
+						"table": "DimUser",
+						"cdc_col": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimTrack",
+						"cdc_col": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimDate",
+						"cdc_col": "date",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "DimArtist",
+						"cdc_col": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"table": "FastStream",
+						"cdc_col": "updated_at",
+						"from_date": ""
+					}
+				]
 			}
 		},
 		"variables": {
